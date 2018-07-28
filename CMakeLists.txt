@@ -7,6 +7,8 @@ find_package(Threads REQUIRED)
 
 add_executable(${PROJECT_NAME} main.cpp split.cpp filter.cpp)
 
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
+
 # unit tests
 include_directories(${GTEST_INCLUDE_DIR})
 add_executable(test_split split.cpp test_split.cpp)
@@ -24,3 +26,13 @@ set_target_properties(${PROJECT_NAME} test_split test_filter PROPERTIES
 enable_testing()
 add_test(TestSplit test_split)
 add_test(TestFilter test_filter)
+
+set(CPACK_GENERATOR DEB)
+
+set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
+
+set(CPACK_PACKAGE_CONTACT tagirmi@gmail.com)
+
+include (CPack)
