@@ -1,9 +1,9 @@
 #pragma once
 
-#include <string>
 #include <vector>
+#include <string>
 
-using ip_pool_t = std::vector<std::vector<std::string> >;
+using ip_pool_t = std::vector<std::vector<std::string>>;
 
 void reverse_lexicographically_sort(ip_pool_t&);
 
