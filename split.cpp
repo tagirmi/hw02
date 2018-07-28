@@ -15,9 +15,9 @@ std::vector<std::string> split(const std::string& string, char delimiter)
   std::string line;
 
   while (std::getline(iss, line, delimiter))
-      result.emplace_back(line);
+    result.emplace_back(line);
   if (line.empty())
-      result.emplace_back(line);
+    result.emplace_back(line);
 
   return result;
 }
