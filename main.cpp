@@ -1,4 +1,3 @@
-#include <cassert>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -23,7 +22,6 @@ void print(const ip_pool_t& ip_pool)
 
 auto to_uint8(int value)
 {
-  assert(value >= 0 && value < 256);
   return static_cast<uint8_t>(value);
 }
 
@@ -34,12 +32,10 @@ auto to_uint8(const std::string& str)
 
 ip_t to_ip(const std::vector<std::string>& strings)
 {
-  assert(strings.size() == 4);
-
-  return {to_uint8(strings[0]),
-        to_uint8(strings[1]),
-        to_uint8(strings[2]),
-        to_uint8(strings[3])};
+  return {to_uint8(strings.at(0)),
+        to_uint8(strings.at(1)),
+        to_uint8(strings.at(2)),
+        to_uint8(strings.at(3))};
 }
 
 }
