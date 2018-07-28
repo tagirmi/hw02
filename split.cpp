@@ -1,5 +1,7 @@
 #include "split.h"
 
+#include <sstream>
+
 // ("",  '.') -> [""]
 // ("11", '.') -> ["11"]
 // ("..", '.') -> ["", "", ""]
@@ -9,17 +11,13 @@
 std::vector<std::string> split(const std::string& string, char delimiter)
 {
   std::vector<std::string> result;
+  std::istringstream iss{string};
+  std::string line;
 
-  std::string::size_type start = 0;
-  std::string::size_type stop = string.find_first_of(delimiter);
-  while(stop != std::string::npos) {
-    result.push_back(string.substr(start, stop - start));
-
-    start = stop + 1;
-    stop = string.find_first_of(delimiter, start);
-  }
-
-  result.push_back(string.substr(start));
+  while (std::getline(iss, line, delimiter))
+      result.emplace_back(line);
+  if (line.empty())
+      result.emplace_back(line);
 
   return result;
 }
