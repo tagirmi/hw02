@@ -19,10 +19,9 @@ ip_pool_t filter(const ip_pool_t& ip_pool, P pred)
 
 void reverse_lexicographically_sort(ip_pool_t& ip_pool)
 {
-  std::sort(ip_pool.begin(), ip_pool.end(), [] (const ip_t& a, const ip_t& b) {
+  std::sort(ip_pool.rbegin(), ip_pool.rend(), [] (const ip_t& a, const ip_t& b) {
     return std::lexicographical_compare(a.begin(), a.end(), b.begin(), b.end());
   });
-  std::reverse(ip_pool.begin(), ip_pool.end());
 }
 
 ip_pool_t filter(const ip_pool_t& ip_pool, int firstByte)
